@@ -4,5 +4,5 @@ GoGolf allows you to have your tee time info saved so that you can view and book
 Works with TeeItUp and TeeSnap.
 
 ## Structure
-- Go backend
-- Javascript / React frontend
+- Go backend (using Wails)
+- Typescript / Vue frontend (using Wails)
