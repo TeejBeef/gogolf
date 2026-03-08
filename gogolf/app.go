@@ -10,6 +10,13 @@ import (
 	"github.com/joho/godotenv"
 )
 
+/*
+eaglecreekgolfclub.teesnap.net/customer-api/teetimes-day?course=1076&date=2026-02-27&players=2&holes=18&addons=off
+
+GET /customer-api/teetimes-day?course=1076&date=2026-02-27&players=2&holes=18&addons=off HTTP/2
+Host: eaglecreekgolfclub.teesnap.net
+*/
+
 // App struct
 type App struct {
 	ctx context.Context

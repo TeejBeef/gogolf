@@ -1,15 +1,24 @@
 <script lang="ts" setup>
-import {reactive} from 'vue'
-import {Greet} from '../../wailsjs/go/main/App'
+import { reactive } from 'vue'
+import { Greet } from '../../wailsjs/go/main/App'
+import { GetTeeTimes } from '../../wailsjs/go/main/App'
+import { time } from '../../wailsjs/go/models'
 
 const data = reactive({
   name: "",
   resultText: "Please enter your name below 👇",
 })
 
-function greet() {
-  Greet(data.name).then(result => {
-    data.resultText = result
+const teetime = reactive({
+  courses: ["", ""],
+  date: Date,
+  time: time,
+  results: "",
+})
+
+function getteetimes() {
+  GetTeeTimes(teetime.courses, teetime.time).then(result => {
+    console.log(result)
   })
 }
 
@@ -17,10 +26,12 @@ function greet() {
 
 <template>
   <main>
-    <div id="result" class="result">{{ data.resultText }}</div>
+    <!-- <div id="result" class="result">{{ data.resultText }}</div> -->
     <div id="input" class="input-box">
-      <input id="name" v-model="data.name" autocomplete="off" class="input" type="text"/>
-      <button class="btn" @click="greet">Greet</button>
+      <input id="teetimescourses" v-model="teetime.courses" autocomplete="off" class="input" type="options" />
+      <input id="teetimesdate" v-model="teetime.date" autocomplete="off" class="input" type="date" />
+      <input id="teetimestime" v-model="teetime.time" autocomplete="off" class="input" type="time" />
+      <button class="btn" @click="getteetimes">GetTeeTimes</button>
     </div>
   </main>
 </template>
@@ -40,7 +51,7 @@ function greet() {
   border: none;
   margin: 0 0 0 20px;
   padding: 0 8px;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .input-box .btn:hover {
